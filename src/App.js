@@ -1,5 +1,5 @@
-import { Container, Row, Col } from "react-bootstrap";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import { Container, Row, Col } from "react-bootstrap";
 import "./App.css";
 import Cards from "./Cards";
 
@@ -98,11 +98,29 @@ function App() {
     },
   ];
 
+  const getAllCards = (restData) => {
+    return restData.map((list) => (
+      <Col lg={3}>
+        <Cards
+          imageUrl={list.imageUrl}
+          heading={list.heading}
+          restDetails={list.restDetails}
+          star={list.star}
+          mins={list.mins}
+          forcount={list.forcount}
+          off={list.forcount}
+        />
+      </Col>
+    ));
+  };
+
   return (
     <>
       <Container>
-        <Row>
-          <Col lg={3}>
+        <Row>{getAllCards(restData)}</Row>
+      </Container>
+
+      {/* <Col lg={3}>
             <Cards
               imageUrl={restData[0].imageUrl}
               heading={restData[0].heading}
@@ -189,9 +207,9 @@ function App() {
               forcount={restData[7].forcount}
               off={restData[7].off}
             />
-          </Col>
-        </Row>
-      </Container>
+          </Col> */}
+      {/* </Row> */}
+      {/* </Container> */}
     </>
   );
 }
